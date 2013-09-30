@@ -1,0 +1,41 @@
+{% extends 'layout.html.twig' %}
+
+{% import 'widgets.html.twig' as widgets %}
+
+{% block content %}
+    <div id="main">
+        {% block header %}
+            <header>
+                <h1>Soundtrack your life</h1>
+
+                <p>
+                    spotify spotify spotify spotify spotify spotify spotify spotify spotify spotify <br>
+                    spotify spotify spotify spotify spotify spotify spotify spotify spotify spotify <br>
+                    spotify
+                </p>
+            </header>
+        {% endblock %}
+
+        {% block plans %}
+            <article id="plans">
+                <ul>
+                    {% for plan in plans %}
+                        {{ widgets.plan(
+                            plan.name,
+                            plan.summary,
+                            plan.description,
+                            plan.price,
+                            plan.cssClass,
+                            plan.image,
+                            plan.imageAltText,
+                            plan.buttonText,
+                            plan.isHighlighted,
+                            plan.hasTrialPeriod,
+                            plan.trialPeriodText
+                        ) }}
+                    {% endfor %}
+                </ul>
+            </article>
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+/*!
+ * Preboot v2
+ *
+ * Open sourced under MIT license by @mdo.
+ * Some variables and mixins from Bootstrap (Apache 2 license).
+ */
+
+//
+// Mixins: vendor prefixes
+// --------------------------------------------------
+
+// Box sizing
+.box-sizing(@box-model) {
+  -webkit-box-sizing: @box-model; // Safari <= 5
+     -moz-box-sizing: @box-model; // Firefox <= 19
+          box-sizing: @box-model;
+}
+
+// Gradients
+#gradient {
+    .vertical(@startColor: #555, @endColor: #333) {
+        background-color: @endColor;
+        background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+        background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+        background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
+        background-image: linear-gradient(to bottom, @startColor, @endColor); // Standard, IE10
+        background-repeat: repeat-x;
+        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down
+    }
+}
+
+// Center-align a block level element
+.center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

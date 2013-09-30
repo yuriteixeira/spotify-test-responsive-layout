@@ -1,0 +1,194 @@
+@import "normalize.less";
+@import "preboot.less";
+@import "main.less";
+
+// Styles
+html {
+    font-size: 100%;
+
+    @media (min-width: 960px) {
+        font-size: 14px;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    #gradient > .vertical(@gradient-start, @gradient-end);
+    .font();
+
+    color: @color;
+    text-align: center;
+}
+
+header {
+    text-shadow: 0px 1px 0px @shadow-color;
+
+    h1 {
+        .font('bold');
+        font-size: 3.4em;
+        margin-bottom: 0.3em;
+        
+        @media (max-width: 240px) {
+            font-size: 2em;
+        }
+    }
+
+    p {
+        color: @discrete-color;
+    }
+}
+
+#content {
+    max-width: 720px;
+    .center-block;
+}
+
+#main {
+    margin: 1em;
+}
+
+#plans {
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none outside none;
+
+        li {
+            position: relative;
+
+            @media (min-width: 960px) {
+                min-width: 320px;
+                float: left;
+                width: 48%;
+                margin-bottom: 0;
+            }
+
+            #plan > .style;
+
+            h2 {
+                font-size: 2em;
+                margin-top: 0;
+            }
+
+            section {
+                margin-bottom: 1em;
+                font-size: 1.25em;
+            }
+
+            .summary {
+                .font(1.25em, 'bold');
+                margin-bottom: .5em;
+            }
+
+            .description {
+                font-size: 1em;
+
+                img {
+                    padding: .5em 0 1.5em 0;
+                }
+
+                div {
+                    padding: 1em 0;
+                    line-height: 1.5em;
+                    color: @description-strip-color;
+                    background-color: @description-strip-bg-color;
+                }
+            }
+
+            .button {
+                #button > .style();
+
+                @media (max-width: 240px) {
+                    font-size: 1em;
+                }
+            }
+
+            .button.highlighted {
+                #button > .highlight();
+            }
+        }
+
+        li.premium {
+            @media (min-width: 960px) {
+                float: right;
+            }
+        }
+
+        // Being honest: got this technique from spotify website :(
+        *, *:after, *:before {
+            .box-sizing(border-box);
+        }
+
+        .trial-teaser-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            .trial-teaser {
+                display: block;
+                position: relative;
+                width: 100px;
+                top: 22px;
+                right: -14px;
+                color: #fff;
+                text-decoration: none;
+
+                .transform(rotate(45deg));
+
+                &::before {
+                    left: -45px;
+                    .transform(skewY(-45deg) translate(50%, 15px));
+                    .transform-origin(100% center);
+                }
+
+                &::after {
+                    .transform(translate(100%,-100%) skewY(45deg) translateX(-58%));
+                    .transform-origin(0 center);
+                    right: -17px;
+                }
+
+                &::before, &::after {
+                    background-color: @ribbon-fold-bg-color;
+                    content: '';
+                    display: block;
+                    height: 12px;
+                    position: absolute;
+                    width: 30px;
+                }
+            }
+
+            .trial-teaser-text {
+                background-color: @ribbon-front-bg-color;
+                .font(12px, 'bold');
+                height: 30px;
+                padding: 8px 0;
+                position: relative;
+                z-index: 2;
+                vertical-align: baseline;
+
+                &::before {
+                    .transform(translateX(-15%) skewX(-45deg));
+                }
+
+                &::after {
+                    .transform(translateX(15%) skewX(45deg));
+                }
+
+                &::before, &::after {
+                    background-color: @ribbon-front-bg-color;
+                    content: '';
+                    display: block;
+                    height: 30px;
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    z-index: -1;
+                }
+            }
+        }
+    }
+
+}

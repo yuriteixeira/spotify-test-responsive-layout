@@ -1,0 +1,65 @@
+{# 
+
+Plan Widget - Renders a box info info about a plan on plans list
+
+Params:
+    - name: Plan name
+    - summary: Plan summary
+    - description: Plan description
+    - price: Plan price
+    - class: Plan CSS class
+    - image: Plan image that which kind of device will be supported
+    - image_alt: Alt text for plan image
+    - button: Plan button text
+    - is_highlighted: Defines if plan is should be highlighted or not
+    - has_trial_period: Defines if plan has a trial period
+    - trial_period: Short text describing trial period
+#}
+{% macro plan(
+    name,
+    summary,
+    description,
+    price,
+    class,
+    image,
+    image_alt,
+    button,
+    is_highlighted,
+    has_trial_period,
+    trial_period
+) %}
+
+    <li class="{{ class }}">
+        {% if has_trial_period %}
+            <div class="trial-teaser-container">
+                <a class="trial-teaser" href="#trial">
+                    <div class="trial-teaser-text">{{ trial_period }}</div>
+                </a>
+            </div>
+        {% endif %}
+
+        <h2>
+            {{ name }}
+        </h2>
+
+        <section class="summary">
+            <strong>{{ summary }}</strong>
+        </section>
+
+        <section class="price">
+            ${{ price }} a month.
+        </section>
+
+        <section class="description">
+            <img src="images/{{ image }}" alt="{{ image_alt|raw }}" />
+
+            <div>
+                {{ description|raw }}
+            </div>
+        </section>
+
+        <a class="button{{ is_highlighted ? ' highlighted' : '' }}" href="#link">
+            {{ button }}
+        </a>
+    </li>
+{% endmacro %}

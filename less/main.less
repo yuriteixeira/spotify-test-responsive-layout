@@ -1,0 +1,113 @@
+@base-font-face: "ProximaNova";
+@base-font-size: 1em;
+@base-border-radius: 2px;
+
+@color: #333;
+@highlighted-color: #000;
+@discrete-color: #8d8d8d;
+@shadow-color: #fff;
+
+@gradient-start: #ecebe9;
+@gradient-end: #fff;
+
+@border-width: 1px;
+
+@description-strip-color: #646464;
+@description-strip-bg-color: #f7f7f7;
+
+@ribbon-front-bg-color: #9dce0a;
+@ribbon-fold-bg-color: #77bc00;
+
+.transform(@transformation) {
+    -webkit-transform: @transformation;
+    -moz-transform: @transformation;
+    -ms-transform: @transformation;
+    -o-transform: @transformation;
+}
+
+.transform-origin(@transformation) {
+    -webkit-transform-origin: @transformation;
+    -moz-transform-origin: @transformation;
+    -ms-transform-origin: @transformation;
+    -o-transform-origin: @transformation;
+}
+
+.font(@size, @weight: '') when (@weight = ''), (@weight = 'normal') {
+    font-family: "@{base-font-face}-Regular", "Helvetica", "Arial", "sans-serif";
+    font-size: @size;
+}
+
+.font(@size, @weight: '') when (@weight = 'bold') {
+    font-family: "@{base-font-face}-Bold", "Helvetica", "Arial", "sans-serif";
+    font-size: @size;
+    font-weight: bold;
+}
+
+.font(@weight: '') when (@weight = ''), (@weight = 'normal') {
+    font-family: "@{base-font-face}-Regular", "Helvetica", "Arial", "sans-serif";
+    font-size: @base-font-size;
+}
+
+.font(@weight: '') when (@weight = 'bold') {
+    font-family: "@{base-font-face}-Bold", "Helvetica", "Arial", "sans-serif";
+    font-size: @base-font-size;
+    font-weight: bold;
+}
+
+#plan {
+    @padding: 2em 0;
+    @margin-bottom: 10px;
+    @bg-color: #fff;
+
+    @border-width: 1px;
+    @border-style: solid;
+    @border-color: #d4d4d3;
+
+    .style {
+        padding: @padding;
+        margin-bottom: @margin-bottom;
+        background-color: @bg-color;
+        border: @border-width @border-style @border-color;
+        border-radius: @base-border-radius;
+    }
+}
+
+#button {
+    @border-radius: @base-border-radius * 2;
+
+    @color: #595959;
+    @shadow-color: #fff;
+    @border-color: #a3a3a3;
+    @gradient-start: #efefef;
+    @gradient-end: #c8c8c8;
+
+    @highlighted-color: #fff;
+    @highlighted-shadow-color: #000;
+    @highlighted-border-color: #497a00;
+    @highlighted-gradient-start: #78ba00;
+    @highlighted-gradient-end: #529b00;
+
+    .style {
+        .font(1.5em, 'bold');
+        #gradient > .vertical(@gradient-start, @gradient-end);
+
+        display: block;
+        margin: 1.5em 2em 0 2em;
+        padding: .85em 0;
+        color: @color;
+        text-shadow: 0px 1px 0px @shadow-color;
+        text-decoration: none;
+        border-style: solid;
+        border-radius: @border-radius;
+        border-color: @border-color;
+        border-width: @border-width;
+    }
+
+    .highlight {
+        #gradient > .vertical(@highlighted-gradient-start, @highlighted-gradient-end);
+
+        color: @highlighted-color;
+        text-shadow: 0px -1px 0px @highlighted-shadow-color;
+        border-color: @highlighted-border-color;
+    }
+}
